@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tool"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E91c1A"
+    android:scrollbars="vertical">
+
+    <include
+
+        android:id="@+id/iclude_toolbar"
+        layout="@layout/custom_toolbar"
+
+        />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/iclude_toolbar">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e91b1a"
+
+            android:scrollbars="vertical">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <TextView
+                    android:id="@+id/loginlogo"
+                    android:layout_width="200sp"
+                    android:layout_height="135px"
+                    android:text="NeoSTORE"
+                    android:textColor="#ffffff"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <EditText
+                android:id="@+id/registerfirstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/constraint"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableLeft="@drawable/username_icon"
+                android:drawablePadding="10dp"
+                android:hint="First name"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/registerlastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/registerfirstname"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableLeft="@drawable/username_icon"
+                android:drawablePadding="10dp"
+                android:hint="Last name"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/emailregister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/registerlastname"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableLeft="@drawable/email_icon"
+                android:drawablePadding="10dp"
+                android:hint="Email"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/regpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emailregister"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="10dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/confregpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/regpass"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="10dp"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+
+
+                android:textColorHint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/gendertext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/confregpass"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:text="Gender :"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGrp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/confregpass"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/gendertext"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+
+                >
+
+                <RadioButton
+                    android:id="@+id/radioM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="0.5"
+                    android:buttonTint="#ffffff"
+                    android:checked="true"
+                    android:text="M"
+                    android:textColor="#ffffff"
+
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:id="@+id/radioF"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="0.5"
+                    android:buttonTint="#ffffff"
+                    android:checked="false"
+                    android:text="F"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp"
+
+                    />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/phonereg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/radioGrp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableLeft="@drawable/ic_phone_android_black_24dp"
+                android:drawablePadding="10dp"
+                android:hint="Phone Number"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+
+
+                android:textColorHint="#FFFFFF" />
+
+            <CheckBox
+                android:id="@+id/checktermsconditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phonereg"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:buttonTint="#ffffff" />
+
+            <TextView
+                android:id="@+id/termstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phonereg"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@id/checktermsconditions"
+                android:text="I agree the Terms and Conditions "
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/registerbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/termstext"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="12dp"
+                android:background="#FFFFFF"
+                android:text="REGISTER"
+                android:textColor="#e91b1a"
+                android:textSize="25sp" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
