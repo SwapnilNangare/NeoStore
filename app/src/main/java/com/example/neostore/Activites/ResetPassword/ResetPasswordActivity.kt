@@ -22,15 +22,15 @@ class ResetPasswordActivity : BaseClassActivity() {
         setEnabledTitle()
         var old_password = findViewById<EditText>(R.id.old_password)
         var new_password = findViewById<EditText>(R.id.new_password)
-        var confirm_password =
-            findViewById<EditText>(R.id.confirm_new_password)
+        var confirm_password = findViewById<EditText>(R.id.confirm_new_password)
+
         val resetpwdbutton = findViewById<Button>(R.id.resetpwdbtn)
+
         model = ViewModelProvider(this)[UserViewModel::class.java]
         model.Resetpwd.observe(this, object : Observer<Reset_Reponse_Base?> {
             override fun onChanged(t: Reset_Reponse_Base?) {
 
                 val intent = Intent(applicationContext, HomeActivity::class.java)
-
                 startActivity(intent)
                 finish()
             }

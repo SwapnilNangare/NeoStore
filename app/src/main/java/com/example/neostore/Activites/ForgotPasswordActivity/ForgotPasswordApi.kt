@@ -1,5 +1,6 @@
 package com.example.neostore.Activites.ForgotPasswordActivity
 
+import com.example.neostore.Activites.ForgotPasswordActivity.model.ForgotResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -11,8 +12,7 @@ interface ForgotPasswordApi {
 
     @FormUrlEncoded
     @POST("users/forgot")
-    fun emailForgotpwd(
-        @Field("email") email:String)
+    fun emailForgotpwd(@Field("email") email:String)
             : Call<ForgotResponse>
 
 

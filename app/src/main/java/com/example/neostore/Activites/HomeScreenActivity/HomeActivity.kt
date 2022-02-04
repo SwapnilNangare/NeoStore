@@ -56,11 +56,7 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
     private var previousState = 0
     private var currentState: Int = 0
 
-    companion object {
-        var favoriteDatabase1: FavProdDB? = null
 
-
-    }
 
     private lateinit var counterView: TextView
     var adapter: AddressAdapter? = null

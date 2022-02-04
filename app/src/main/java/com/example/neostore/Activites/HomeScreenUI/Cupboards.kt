@@ -33,8 +33,7 @@ class Cupboards: BaseClassActivity() {
 
         recyclerView = findViewById(R.id.recyleview)
 
-        val model =
-            ViewModelProvider(this)[ProductViewModel::class.java]
+        val model = ViewModelProvider(this)[ProductViewModel::class.java]
 
         model.Cupboard?.observe(this, object : Observer<Table_response> {
             override fun onChanged(t: Table_response?) {
@@ -43,8 +42,7 @@ class Cupboards: BaseClassActivity() {
                 recyclerView.layoutManager = LinearLayoutManager(applicationContext)
                 recyclerView.addItemDecoration(
                     DividerItemDecoration(
-                        recyclerView.context,
-                        DividerItemDecoration.VERTICAL
+                        recyclerView.context, DividerItemDecoration.VERTICAL
                     )
                 )
                 recyclerAdapter.setMovieListItems(t?.data as MutableList<Tabledata>)

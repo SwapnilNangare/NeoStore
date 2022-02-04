@@ -24,11 +24,11 @@ class RegisterActivity : AppCompatActivity(){
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.register_activity)
+
         val toolbar: ImageView = findViewById(R.id.toolbar)
 
-        //setSupportActionBar(toolbar);
+
         toolbar.setOnClickListener{
             NavUtils.navigateUpFromSameTask(this)
 

@@ -19,10 +19,7 @@ class ProductAdapter(val context: Context, var tablelist: List<Tabledata>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.table_recycle_item,
-            parent,
-            false
-        )
+            R.layout.table_recycle_item, parent, false)
         return MyViewHolder(view)
     }
 
@@ -36,20 +33,14 @@ class ProductAdapter(val context: Context, var tablelist: List<Tabledata>) :
 
         holder.productname.text = tableItem.name
         holder.producername.text = tableItem.producer
-
         holder.productprice.text = tableItem.cost.toString()
-
-        Glide.with(holder.itemView!!.context).load(tableItem.product_images)
-            .into(holder.image)
-
+        Glide.with(holder.itemView!!.context).load(tableItem.product_images).into(holder.image)
         holder.rate.setRating(tableItem.rating.toFloat());
 
 
         holder.itemView!!.setOnClickListener {
             val context: Context = holder.itemView.context
-            val i = Intent(
-                context,
-                Productdetails::class.java
+            val i = Intent(context, Productdetails::class.java
             )
             i.putExtra("id", tableItem.id)
             i.putExtra("product_category_id", tableItem.product_category_id)
@@ -62,12 +53,8 @@ class ProductAdapter(val context: Context, var tablelist: List<Tabledata>) :
             i.putExtra("view_count", tablelist.get(position).view_count)
             i.putExtra("created", tablelist.get(position).created)
             i.putExtra("modified", tablelist.get(position).modified)
-
-
             i.putExtra("image", tableItem.product_images)
             i.putExtra("current_img", position)
-
-
             context.startActivity(i)
         }
 

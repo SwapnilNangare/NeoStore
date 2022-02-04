@@ -12,9 +12,9 @@ interface ResetPasswordApi {
     @POST("users/change")
     fun resetpassword(
         @Header("access_token") token: String,
+
         @Field("old_password") old_password: String,
         @Field("password") password: String,
-
         @Field("confirm_password") confirm_password: String
     )
             : Call<Reset_Reponse_Base>

@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.example.neostore.Activites.ForgotPasswordActivity.ForgotPasswordManager
-import com.example.neostore.Activites.ForgotPasswordActivity.ForgotResponse
+import com.example.neostore.Activites.ForgotPasswordActivity.model.ForgotResponse
 import com.example.neostore.Activites.LoginScreen.LoginApiManager
 import com.example.neostore.Activites.LoginScreen.model.LoginResponse
 import com.example.neostore.Activites.RegisterScreen.RegisterApiManager
@@ -232,7 +232,6 @@ class UserViewModel(context: Application, private val savedStateHandle: SavedSta
         ResetPasswordApiManager.instance.resetpassword(token, old, newpwd, confpwd)
             .enqueue(object : Callback<Reset_Reponse_Base> {
                 override fun onFailure(call: Call<Reset_Reponse_Base>, t: Throwable) {
-
                     Log.d("res", "" + t)
 
 

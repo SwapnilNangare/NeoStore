@@ -56,7 +56,7 @@ class EditProfile : BaseClassActivity() {
 
         val edittext1 = findViewById(R.id.dob) as EditText
         val date =
-            OnDateSetListener { view, year, monthOfYear, dayOfMonth -> // TODO Auto-generated method stub
+            OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 myCalendar.set(Calendar.YEAR, year)
                 myCalendar.set(Calendar.MONTH, monthOfYear)
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -67,7 +67,7 @@ class EditProfile : BaseClassActivity() {
 
         edittext1.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                // TODO Auto-generated method stub
+
                 DatePickerDialog(
                     this@EditProfile, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),

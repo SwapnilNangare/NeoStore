@@ -1,4 +1,4 @@
-package com.example.neostore.Activites.ForgotPasswordActivity
+package com.example.neostore.Activites.ForgotPasswordActivity.model
 
 import com.google.gson.annotations.SerializedName
 

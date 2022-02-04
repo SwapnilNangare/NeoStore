@@ -1,80 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.neostore">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        />
-    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
 
+        android:name="com.example.neostore.Activites.Address.CustomApplication"
         android:allowBackup="true"
+        android:allowClearUserData="true"
+        android:allowClearUserDataOnFailedRestore="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="com.example.neostore.Activites.Address.CustomApplication"
-        android:usesCleartextTraffic="true"
-        android:allowClearUserData="true"
-        android:allowClearUserDataOnFailedRestore="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name="com.example.neostore.Activites.LoginScreen.LoginActivity"
 
             >
 
         </activity>
-        <activity android:name="com.example.neostore.Activites.RegisterScreen.RegisterActivity"
-        android:launchMode="singleTop"
-        android:parentActivityName="com.example.neostore.Activites.LoginScreen.LoginActivity"
-        />
+        <activity
+            android:name="com.example.neostore.Activites.RegisterScreen.RegisterActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.example.neostore.Activites.LoginScreen.LoginActivity" />
 
-        <activity android:name=".Activites.HomeScreenActivity.HomeActivity"
+        <activity
+            android:name=".Activites.HomeScreenActivity.HomeActivity"
             android:launchMode="singleTop"
             android:parentActivityName="com.example.neostore.Activites.LoginScreen.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"
-                    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+                <category
+                    android:name="android.intent.category.LAUNCHER"
+                    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
             </intent-filter>
         </activity>
 
-<activity android:name="com.example.neostore.Activites.HomeScreenUI.Tables"
-    android:launchMode="singleTop"
-    android:label="Table"
-    android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity"/>
+        <activity
+            android:name="com.example.neostore.Activites.HomeScreenUI.Tables"
+            android:label="Table"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity" />
 
-        <activity android:name="com.example.neostore.Activites.HomeScreenUI.Sofa"
+        <activity
+            android:name="com.example.neostore.Activites.HomeScreenUI.Sofa"
             android:label="Sofas"
-            android:launchMode="singleTop"
-            android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.neostore.Activites.HomeScreenActivity.HomeActivity" />
-        </activity>
-
-        <activity android:name="com.example.neostore.Activites.HomeScreenUI.Chairs"
-            android:label="Chairs"
-            android:launchMode="singleTop"
-            android:parentActivityName="com.example.neostore.Activites.HomeScreenUI.Chairs"/>
-        <activity android:name="com.example.neostore.Activites.HomeScreenUI.Cupboards"
-            android:label="Cupboards"
-            android:launchMode="singleTop"
-            android:parentActivityName="com.example.neostore.Activites.HomeScreenUI.Cupboards"/>
-        <activity android:name=".Activites.ForgotPasswordActivity.ForgotPassword"
-            android:launchMode="singleTop"/>
-        <activity android:name="com.example.neostore.Activites.MyAccount.MyAccount"
             android:launchMode="singleTop"
             android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.neostore.Activites.HomeScreenActivity.HomeActivity" />
         </activity>
-        <activity android:name="com.example.neostore.Activites.ResetPassword.ResetPasswordActivity"
+
+        <activity
+            android:name="com.example.neostore.Activites.HomeScreenUI.Chairs"
+            android:label="Chairs"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.example.neostore.Activites.HomeScreenUI.Chairs" />
+        <activity
+            android:name="com.example.neostore.Activites.HomeScreenUI.Cupboards"
+            android:label="Cupboards"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.example.neostore.Activites.HomeScreenUI.Cupboards" />
+        <activity
+            android:name=".Activites.ForgotPasswordActivity.ForgotPassword"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.example.neostore.Activites.MyAccount.MyAccount"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.neostore.Activites.HomeScreenActivity.HomeActivity" />
+        </activity>
+        <activity
+            android:name="com.example.neostore.Activites.ResetPassword.ResetPasswordActivity"
             android:launchMode="singleTop"
             android:parentActivityName="com.example.neostore.Activites.MyAccount.MyAccount">
             <meta-data
@@ -97,9 +108,10 @@
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.neostore.Activites.HomeScreenUI.Tables"/>
+                android:value="com.example.neostore.Activites.HomeScreenUI.Tables" />
 
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -109,6 +121,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
         <activity
             android:name="com.example.neostore.Activites.MyAccount.EditProfile"
             android:launchMode="singleTask"
@@ -117,35 +130,37 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.neostore.Activites.MyAccount.MyAccount" />
         </activity>
-        <activity android:name="com.example.neostore.Activites.MyCart.AddToCart"
-            android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity"
+        <activity
+            android:name="com.example.neostore.Activites.MyCart.AddToCart"
             android:launchMode="singleTop"
-            >
+            android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activites.HomeScreenActivity.HomeActivity"/>
+                android:value=".Activites.HomeScreenActivity.HomeActivity" />
 
         </activity>
-<activity android:name="com.example.neostore.Activites.Address.AddressActivity"
-    android:launchMode="singleTop"
-    />
-        <activity android:name="com.example.neostore.Activites.Address.AddAddressActivity"
-            android:parentActivityName="com.example.neostore.Activites.Address.AddressActivity"
+        <activity
+            android:name="com.example.neostore.Activites.Address.AddressActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.example.neostore.Activites.Address.AddAddressActivity"
+            android:launchMode="singleInstance"
 
-            android:launchMode="singleInstance">
+            android:parentActivityName="com.example.neostore.Activites.Address.AddressActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.neostore.Activites.Address.AddressActivity" />
         </activity>
 
-        <activity android:name="com.example.neostore.Activites.Order.OrderListActivity"
-            android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity"
-            >
+        <activity
+            android:name="com.example.neostore.Activites.Order.OrderListActivity"
+            android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.neostore.Activites.HomeScreenActivity.HomeActivity" />
         </activity>
-        <activity android:name="com.example.neostore.Activites.OrderDetail.OrderDetailList"
+        <activity
+            android:name="com.example.neostore.Activites.OrderDetail.OrderDetailList"
             android:parentActivityName="com.example.neostore.Activites.Order.OrderListActivity"
 
             >
@@ -153,16 +168,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.neostore.Activites.OrderDetail.OrderDetailList" />
         </activity>
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/AppTheme1"/>
-<activity android:name="com.example.neostore.Activites.table.FavouriteActivity"
-    android:launchMode="singleTop"
-    />
-        <activity android:name="com.example.neostore.Activites.ProductDetails.Favouriteprod"
-            android:launchMode="singleTop"
-            android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity"
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/AppTheme1" />
 
-            >
+
+        <activity
+            android:name="com.example.neostore.Activites.ProductDetails.Favouriteprod"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activites.HomeScreenActivity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.neostore.Activites.HomeScreenActivity.HomeActivity" />

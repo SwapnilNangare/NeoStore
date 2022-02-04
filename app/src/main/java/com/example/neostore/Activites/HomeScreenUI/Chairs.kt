@@ -11,12 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.neostore.Base.BaseClassActivity
-import com.example.neostore.R
-import com.example.neostore.Activites.table.ProductViewModel
 import com.example.neostore.Activites.table.ProductAdapter
+import com.example.neostore.Activites.table.ProductViewModel
 import com.example.neostore.Activites.table.Table_response
 import com.example.neostore.Activites.table.Tabledata
+import com.example.neostore.Base.BaseClassActivity
+import com.example.neostore.R
 
 class Chairs: BaseClassActivity(){
     lateinit var recyclerView: RecyclerView
@@ -30,8 +30,7 @@ class Chairs: BaseClassActivity(){
        setScreenTitle("Chairs")
         recyclerView = findViewById(R.id.recyleview)
 
-        val model =
-            ViewModelProvider(this)[ProductViewModel::class.java]
+        val model = ViewModelProvider(this)[ProductViewModel::class.java]
 
         model.Chair?.observe(this,object : Observer<Table_response> {
             override fun onChanged(t: Table_response?) {
@@ -62,8 +61,6 @@ class Chairs: BaseClassActivity(){
         }
     }
     override fun onBackPressed() {
-        // val intent = Intent(this, HomeActivity::class.java)
-        //startActivityForResult(intent, 2)
         super.onBackPressed()
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

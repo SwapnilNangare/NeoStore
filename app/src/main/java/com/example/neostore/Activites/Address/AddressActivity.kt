@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnChildAttachStateChangeListener
 import com.example.neostore.Activites.Address.Room.Address
 import com.example.neostore.Activites.ForgotPasswordActivity.ForgotPasswordManager
-import com.example.neostore.Activites.ForgotPasswordActivity.ForgotResponse
+import com.example.neostore.Activites.ForgotPasswordActivity.model.ForgotResponse
 import com.example.neostore.Activites.MyCart.AddToCart
 import com.example.neostore.Activites.SharedPrefManager.SharedPrefManager
 import com.example.neostore.R

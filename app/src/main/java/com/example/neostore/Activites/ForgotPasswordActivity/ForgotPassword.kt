@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.neostore.Activites.ForgotPasswordActivity.model.ForgotResponse
 import com.example.neostore.Activites.LoginScreen.*
 import com.example.neostore.Activites.ViewModel.UserViewModel
 import com.example.neostore.Base.BaseClassActivity
