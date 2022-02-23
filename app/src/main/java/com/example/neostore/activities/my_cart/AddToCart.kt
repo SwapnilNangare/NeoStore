@@ -10,58 +10,58 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.neostore.activities.address.AddressActivity
-import com.example.neostore.base.BaseClassActivity
-import com.example.neostore.activities.home_screen.HomeActivity
 import com.example.neostore.R
+import com.example.neostore.activities.address.AddressActivity
+import com.example.neostore.activities.home_screen.HomeActivity
+import com.example.neostore.base.BaseClassActivity
 import kotlinx.android.synthetic.main.add_to_cart.*
 
 
-class AddToCart: BaseClassActivity(){
+class AddToCart : BaseClassActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_to_cart)
         getWindow().setExitTransition(null)
         getWindow().setEnterTransition(null)
-        var mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbartable);
-        setSupportActionBar(mActionBarToolbar);
+        var mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbartable)
+        setSupportActionBar(mActionBarToolbar)
         // add back arrow to toolbar
-      setEnabledTitle()
+        setEnabledTitle()
 
         mActionBarToolbar.setNavigationOnClickListener(View.OnClickListener {
-            onBackPressed() })
+            onBackPressed()
+        })
         placeorder.setOnClickListener {
-            val intent:Intent=Intent(applicationContext, AddressActivity::class.java)
+            val intent: Intent = Intent(applicationContext, AddressActivity::class.java)
             startActivity(intent)
         }
-       loadCart()
+        loadCart()
     }
 
-  fun loadCart(){
+    fun loadCart() {
 
-      val model = ViewModelProvider(this)[CartViewModel::class.java]
+        val model = ViewModelProvider(this)[CartViewModel::class.java]
 
-      model.CartList?.observe(this,object : Observer<CartResponse> {
-          override fun onChanged(t: CartResponse?) {
+        model.cartList?.observe(this, object : Observer<CartResponse> {
+            override fun onChanged(t: CartResponse?) {
 
-              generateDataList(t?.data?.toMutableList())
-totalamount.setText(t?.total.toString())
-          }
-  })
-  }
+                generateDataList(t?.data?.toMutableList())
+                totalamount.setText(t?.total.toString())
+            }
+        })
+    }
+
     fun generateDataList(dataList: MutableList<DataCart?>?) {
-        val recyclerView=findViewById<RecyclerView>(R.id.addtocartrecyleview) as? RecyclerView
-        val linear:LinearLayoutManager=
+        val recyclerView = findViewById<RecyclerView>(R.id.addtocartrecyleview) as? RecyclerView
+        val linear: LinearLayoutManager =
             LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-        recyclerView?.layoutManager=linear
+        recyclerView?.layoutManager = linear
         val adapter = CartAdapter(this@AddToCart, dataList)
-        recyclerView?.adapter=adapter
+        recyclerView?.adapter = adapter
         recyclerView?.addItemDecoration(DividerItemDecorator(resources.getDrawable(R.drawable.divider)))
-       // recyclerView?.setHasFixedSize(true)
+        // recyclerView?.setHasFixedSize(true)
 
         adapter.notifyDataSetChanged()
-//        this@AddToCart.recreate()
-
         if (dataList?.isEmpty() ?: true) {
             recyclerView?.setVisibility(View.GONE)
             totalamount.setVisibility(View.GONE)
@@ -77,23 +77,25 @@ totalamount.setText(t?.total.toString())
 
 
         }
-      recyclerView?.addOnScrollListener(object :
-          RecyclerView.OnScrollListener() {
-          override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-              super.onScrollStateChanged(recyclerView, newState)
-              Log.e("RecyclerView", "onScrollStateChanged")
-          }
+        recyclerView?.addOnScrollListener(object :
+            RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                Log.e("RecyclerView", "onScrollStateChanged")
+            }
 
-          override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-              super.onScrolled(recyclerView, dx, dy)
-          }
-      })
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
     }
+
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this, HomeActivity::class.java)
-startActivity(intent)
+        startActivity(intent)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -107,6 +109,6 @@ startActivity(intent)
 
     override fun onResume() {
         super.onResume()
-loadCart()
+        loadCart()
     }
 }

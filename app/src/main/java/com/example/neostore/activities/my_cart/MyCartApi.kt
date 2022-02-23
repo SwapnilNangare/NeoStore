@@ -8,8 +8,7 @@ interface MyCartApi {
     @GET("cart")
     fun listCart(
         @Header("access_token") token: String
-    )
-            : Call<CartResponse>
+    ): Call<CartResponse>
 
     @FormUrlEncoded
     @POST("deleteCart")
@@ -17,15 +16,13 @@ interface MyCartApi {
         @Header("access_token") token: String,
 
         @Field("product_id") product_id: Int
-    )
-            : Call<DeleteResponse>
+    ): Call<DeleteResponse>
+
     @FormUrlEncoded
     @POST("editCart")
     fun editCart(
         @Header("access_token") token: String,
-
         @Field("product_id") product_id: Int,
         @Field("quantity") quantity: Int
-    )
-            : Call<DeleteResponse>
+    ): Call<DeleteResponse>
 }

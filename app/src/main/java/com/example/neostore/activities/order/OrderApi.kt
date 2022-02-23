@@ -7,7 +7,5 @@ import retrofit2.http.Header
 interface OrderApi {
 
     @GET("orderList")
-    fun getAllOrderList(@Header("access_token") token: String)
-
-            : Call<OrderResponseBase>
+    fun getAllOrderList(@Header("access_token") token: String): Call<OrderResponseBase>
 }

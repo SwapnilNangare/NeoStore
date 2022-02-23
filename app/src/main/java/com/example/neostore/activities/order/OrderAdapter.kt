@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.neostore.R
 import com.example.neostore.activities.order_detail.OrderDetailList
 
-class OrderAdapter(var context: Context, var tablelist: List<OrderResponseData>) :
-    RecyclerView.Adapter<OrderAdapter.MyViewHolder>() {
+class OrderAdapter(var context: Context, var tablelist: List<OrderResponseData>) : RecyclerView.Adapter<OrderAdapter.MyViewHolder>() {
 
     init {
         this.context = context
@@ -22,11 +21,7 @@ class OrderAdapter(var context: Context, var tablelist: List<OrderResponseData>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.order_list_item,
-            parent,
-            false
-        )
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.order_list_item, parent, false)
         return MyViewHolder(view)
     }
 
@@ -46,7 +41,6 @@ class OrderAdapter(var context: Context, var tablelist: List<OrderResponseData>)
 
 
             val context: Context = holder.itemView.context
-
             val intent = Intent("custom-message1")
             intent.putExtra("itemid", tablelist.get(position).id.toString());
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent);

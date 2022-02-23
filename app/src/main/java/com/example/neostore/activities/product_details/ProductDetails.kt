@@ -23,7 +23,6 @@ import androidx.core.content.FileProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
@@ -31,7 +30,6 @@ import com.example.neostore.BuildConfig
 import com.example.neostore.R
 import com.example.neostore.activities.api_manager.ApiManager
 import com.example.neostore.activities.shared_pref_manager.SharedPrefManager
-import com.example.neostore.activities.table.TableData
 import com.example.neostore.base.BaseClassActivity
 import kotlinx.android.synthetic.main.product_details_activity.*
 import org.json.JSONObject
@@ -40,15 +38,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import java.io.FileOutputStream
-import java.util.concurrent.Executors
 
 class ProductDetails : BaseClassActivity() {
     private var rateValue = 0.0f
-
-    val NUM_OF_THREADS = 4
-    var executorService = Executors.newFixedThreadPool(NUM_OF_THREADS)
-    var viewPager: ViewPager? = null
-
     var imagemain: ImageView? = null
 
     @SuppressLint("ClickableViewAccessibility")
@@ -57,7 +49,7 @@ class ProductDetails : BaseClassActivity() {
         setContentView(R.layout.product_details_activity)
 
 
-        var mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbartable);
+        var mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbartable)
         setSupportActionBar(mActionBarToolbar);
 
 
@@ -65,35 +57,16 @@ class ProductDetails : BaseClassActivity() {
         val intent1: Intent = getIntent()
 
         val id: Int = intent1.getIntExtra("id", -1)
-        val product_category_id: Int = intent1.getIntExtra("product_category_id", -1)
 
         val name: String = intent1.getStringExtra("name")
         setScreenTitle(name)
 
-        val producer: String = intent1.getStringExtra("producer")
-        val description: String = intent1.getStringExtra("description")
-        val cost: Int = intent1.getIntExtra("cost", -1)
         val rating: String = intent1.getStringExtra("rating")
-        val viewCount: Int = intent1.getIntExtra("view_count", -1)
-        val created: String = intent1.getStringExtra("created")
-        val modified: String = intent1.getStringExtra("modified")
+
         val productImages: String = intent1.getStringExtra("image")
         Log.e("product_images", productImages)
         Log.e("sdjhj", productImages)
         Log.e("checkname", name)
-        val retroPhoto = TableData(
-            id,
-            product_category_id,
-            name,
-            producer,
-            description,
-            cost,
-            rating,
-            viewCount,
-            created,
-            modified,
-            productImages
-        )
 
 
         val text = findViewById<TextView>(R.id.text1) as TextView
@@ -121,8 +94,6 @@ class ProductDetails : BaseClassActivity() {
                     var res = response
 
                     val ret: ProductDataResponse? = res.body()?.data
-                    val retro: List<ProductImagesResponse> = res.body()?.data?.product_images!!
-
                     Log.e("checkdata", ret?.name.toString())
                     val ygd = ret?.name.toString()
                     text.setText(ygd)
@@ -290,7 +261,6 @@ class ProductDetails : BaseClassActivity() {
 
                         val mBuild: AlertDialog.Builder = AlertDialog.Builder(this@ProductDetails)
                         val mView: View = layoutInflater.inflate(R.layout.buy_now_dialog, null)
-
 
                         val titleimage = mView.findViewById<TextView>(R.id.titleimage2) as TextView
                         val imagerate = mView.findViewById<ImageView>(R.id.imagebuy) as ImageView

@@ -14,8 +14,7 @@ class CustomApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        this.database = Room.databaseBuilder<Database>(
-            applicationContext,
+        this.database = Room.databaseBuilder<Database>(applicationContext,
             Database::class.java, "database"
         ).allowMainThreadQueries()
             .build()

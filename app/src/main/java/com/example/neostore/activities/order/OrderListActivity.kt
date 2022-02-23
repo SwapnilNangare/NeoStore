@@ -18,7 +18,7 @@ class OrderListActivity : BaseClassActivity() {
         setContentView(R.layout.table_activity)
 
         var mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbartable);
-        setSupportActionBar(mActionBarToolbar);
+        setSupportActionBar(mActionBarToolbar)
         setScreenTitle("My Orders")
 
         val model = ViewModelProvider(this)[OrderListViewModel::class.java]
@@ -35,8 +35,7 @@ class OrderListActivity : BaseClassActivity() {
 
     fun generateDataList(dataList: List<OrderResponseData>) {
         val recyclerView = findViewById<RecyclerView>(R.id.recyleview)
-        val linear: LinearLayoutManager =
-            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        val linear: LinearLayoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linear
         val adapter = OrderAdapter(this@OrderListActivity, dataList)
         recyclerView.adapter = adapter

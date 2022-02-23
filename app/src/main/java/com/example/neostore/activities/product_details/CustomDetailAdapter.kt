@@ -1,5 +1,6 @@
 package com.example.neostore.activities.product_details
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -14,15 +15,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.neostore.R
 
 
-class CustomDetailAdapter(
-    context: Context,
-    dataList: List<ProductImagesResponse>
-) :
-    RecyclerView.Adapter<CustomDetailAdapter.CustomViewHolder>() {
+class CustomDetailAdapter(context: Context, dataList: List<ProductImagesResponse>): RecyclerView.Adapter<CustomDetailAdapter.CustomViewHolder>() {
     private val dataList: List<ProductImagesResponse>
     private val context: Context
 
-    // If you want first item of recyclerview selected by defualt
     private var selectedPos: Int = 0
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -44,7 +40,7 @@ class CustomDetailAdapter(
         return CustomViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CustomViewHolder, @SuppressLint("RecyclerView") position: Int) {
         ///  holder.relativeitem.setBackgroundColor(Color.parseColor("#000000"));
         holder.relativeitem.setSelected(selectedPos == position);
         Glide.with(context).load(dataList[position].image)

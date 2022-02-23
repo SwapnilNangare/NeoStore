@@ -16,8 +16,8 @@ import com.bumptech.glide.Glide
 import com.daimajia.swipe.SwipeLayout
 import com.daimajia.swipe.SwipeLayout.SwipeListener
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
-import com.example.neostore.activities.api_manager.ApiManager
 import com.example.neostore.R
+import com.example.neostore.activities.api_manager.ApiManager
 import com.example.neostore.activities.shared_pref_manager.SharedPrefManager
 import org.json.JSONObject
 import retrofit2.Call
@@ -26,32 +26,32 @@ import retrofit2.Response
 
 
 class CartAdapter(private val context: Context, private val dataList: MutableList<DataCart?>?) :
-    RecyclerSwipeAdapter<CartAdapter.CustomViewHolder>() , AdapterView.OnItemSelectedListener{ //added RecyclerSwipeAdapter and override
+    RecyclerSwipeAdapter<CartAdapter.CustomViewHolder>(),
+    AdapterView.OnItemSelectedListener { //added RecyclerSwipeAdapter and override
 
-    var country =
-        arrayOf(1, 2, 3, 4, 5, 6, 7, 8)
+    var country = arrayOf(1, 2, 3, 4, 5, 6, 7, 8)
     var progressDialog: ProgressDialog? = null
 
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val mView: View
-      val swipeLayout:SwipeLayout
+        val swipeLayout: SwipeLayout
         val productImage: ImageView
         val productName: TextView
         val productCategory: TextView
         val productPrice: TextView
-        val tvDelete:TextView
-        val spin:Spinner
+        val tvDelete: TextView
+        val spin: Spinner
+
         init {
             mView = itemView
-        productImage= mView.findViewById(R.id.imagecart)
-           productName= mView.findViewById(R.id.imagenamecart)
-            productCategory= mView.findViewById(R.id.imagecategory)
-
-         productPrice =mView.findViewById(R.id.price)
-            swipeLayout=mView.findViewById(R.id.swipe)
-            tvDelete=mView.findViewById(R.id.tvDelete)
-             spin = mView.findViewById(R.id.spinner) as Spinner
+            productImage = mView.findViewById(R.id.imagecart)
+            productName = mView.findViewById(R.id.imagenamecart)
+            productCategory = mView.findViewById(R.id.imagecategory)
+            productPrice = mView.findViewById(R.id.price)
+            swipeLayout = mView.findViewById(R.id.swipe)
+            tvDelete = mView.findViewById(R.id.tvDelete)
+            spin = mView.findViewById(R.id.spinner) as Spinner
 
         }
 
@@ -65,32 +65,26 @@ class CartAdapter(private val context: Context, private val dataList: MutableLis
     }
 
     override fun getSwipeLayoutResourceId(position: Int): Int {
-        return R.id.swipe;
+        return R.id.swipe
 
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, @SuppressLint("RecyclerView") position: Int) {
-      val  progressDialog :ProgressDialog= ProgressDialog(context);
+        val progressDialog: ProgressDialog = ProgressDialog(context);
         holder.productName.text = dataList?.get(position)?.product?.name ?: null
-        holder.productCategory.text = "(" +dataList?.get(position)?.product?.product_category +")"
+        holder.productCategory.text = "(" + dataList?.get(position)?.product?.product_category + ")"
 
         holder.productPrice.text = dataList?.get(position)?.product?.cost.toString()
-
-        Glide.with(context).load(dataList?.get(position)?.product?.product_images)
-            .into(holder.productImage)
+        Glide.with(context).load(dataList?.get(position)?.product?.product_images).into(holder.productImage)
 
         holder.swipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut)
         Log.e("checkidd", dataList?.get(position)?.product?.id.toString())
         // Drag From Right
 
         // Drag From Right
-        holder.swipeLayout.addDrag(
-            SwipeLayout.DragEdge.Right,
-            holder.swipeLayout.findViewById(R.id.bottom_wrapper)
-        )
-val id =dataList?.get(position)?.product?.id
+        holder.swipeLayout.addDrag(SwipeLayout.DragEdge.Right, holder.swipeLayout.findViewById(R.id.bottom_wrapper))
+        val id = dataList?.get(position)?.product?.id
 
-        // Handling different events when swiping
         holder.swipeLayout.addSwipeListener(object : SwipeListener {
             override fun onClose(layout: SwipeLayout) {
                 //when the SurfaceView totally cover the BottomView.
@@ -118,14 +112,13 @@ val id =dataList?.get(position)?.product?.id
             .setOnClickListener(View.OnClickListener {
             })
 
-        val aa: ArrayAdapter<*> =
-            ArrayAdapter<Any?>(context, android.R.layout.simple_spinner_item, country)
+        val aa: ArrayAdapter<*> = ArrayAdapter<Any?>(context, android.R.layout.simple_spinner_item, country)
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         holder.spin.setAdapter(aa)
         holder.spin.setSelection(dataList?.get(position)?.quantity!! - 1)
 
-          holder.spin.setSelection(dataList?.get(position)?.quantity!! - 1, false)
+        holder.spin.setSelection(dataList?.get(position)?.quantity!! - 1, false)
 
         holder.spin.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(
@@ -138,16 +131,11 @@ val id =dataList?.get(position)?.product?.id
 
                 val id = dataList?.get(position)!!.product.id
 
-                val token: String =
-                    SharedPrefManager.getInstance(
-                        context
-                    ).user.access_token.toString()
+                val token: String = SharedPrefManager.getInstance(context).user.access_token.toString()
                 ApiManager.instance4.editCart(token, id, country[position1])
                     .enqueue(object : Callback<DeleteResponse> {
                         override fun onFailure(call: Call<DeleteResponse>, t: Throwable) {
                             Log.d("res", "" + t)
-
-
                         }
 
                         override fun onResponse(
@@ -201,7 +189,6 @@ val id =dataList?.get(position)?.product?.id
 
                         Log.d("res", "" + t)
 
-
                     }
 
                     override fun onResponse(
@@ -226,9 +213,6 @@ val id =dataList?.get(position)?.product?.id
                             dataList?.removeAt(position)
                             notifyItemRangeChanged(position, dataList?.size!!)
                             mItemManger.closeAllItems()
-
-                            //Toast.makeText( view.context, "Deleted " + holder.productname.getText().toString(), Toast.LENGTH_SHORT ).show()
-
                         } else {
                             try {
                                 val jObjError =
@@ -252,19 +236,16 @@ val id =dataList?.get(position)?.product?.id
 
 
     }
-        override fun getItemCount() = dataList?.size ?: 0
 
-    fun progress()
-    {
+    override fun getItemCount() = dataList?.size ?: 0
+
+    fun progress() {
         progressDialog?.dismiss()
-        val intent =
-            Intent(context.applicationContext, AddToCart::class.java)
-        intent.flags =
-            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
+        val intent = Intent(context.applicationContext, AddToCart::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
         context.applicationContext.startActivity(intent)
         (context as Activity?)!!.overridePendingTransition(0, 0)
 
-        //  (context as Activity).finish()
 
 
     }

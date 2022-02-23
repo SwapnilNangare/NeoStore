@@ -12,7 +12,7 @@ import retrofit2.Response
 
 class CartViewModel (context: Application): AndroidViewModel(context) {
     private var Cart: MutableLiveData<CartResponse>? = null
-    val CartList: MutableLiveData<CartResponse>?
+    val cartList: MutableLiveData<CartResponse>?
         get() {
 
             if (Cart == null) {
@@ -22,10 +22,7 @@ class CartViewModel (context: Application): AndroidViewModel(context) {
             return Cart
         }
     private fun loadCartList(){
-        val token: String =
-            SharedPrefManager.getInstance(
-                getApplication()
-            ).user.access_token.toString()
+        val token: String = SharedPrefManager.getInstance(getApplication()).user.access_token.toString()
         ApiManager.instance4.listCart(token).enqueue(object :
             Callback<CartResponse> {
             override fun onFailure(call: Call<CartResponse>, t: Throwable) {
