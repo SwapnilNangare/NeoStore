@@ -6,14 +6,13 @@ import retrofit2.http.*
 interface ProductDetailsApi {
 
     @GET("products/getDetail")
-    fun fetchUserdetail(@Query("product_id") product_id: Int)
-            : Call<ProductBaseResponse>
+    fun fetchUserDetail(
+        @Query("product_id") product_id: Int): Call<ProductBaseResponse>
 
     @FormUrlEncoded
     @POST("addToCart")
-    fun buynow(
+    fun buyNow(
         @Header("access_token") token: String,
-
         @Field("product_id") product_id: Int,
         @Field("quantity") quantity: Int
     )
@@ -24,7 +23,5 @@ interface ProductDetailsApi {
     fun setRating(
         @Field("product_id") product_id: Int,
         @Field("rating") value: Float
-    )
-
-            : Call<RateResponse>
+    ): Call<RateResponse>
 }

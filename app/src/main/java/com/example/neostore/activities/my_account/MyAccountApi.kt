@@ -11,7 +11,7 @@ interface MyAccountApi {
             : Call<MyAccountBaseResponse>
     @Multipart
     @POST("users/update")
-    fun useredit(
+    fun userEdit(
         @Header("access_token") token: String,
         @PartMap() images: MutableMap<String, RequestBody>
     )

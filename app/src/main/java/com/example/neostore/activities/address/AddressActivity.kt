@@ -112,40 +112,42 @@ class AddressActivity : BaseClassActivity() {
             val ItemName = intent.getStringExtra("item1")
             ordernow.setOnClickListener {
 
-                ApiManager.instance.ordernow(token, ItemName)
-                    .enqueue(object : Callback<ForgotResponse> {
-                        override fun onFailure(call: Call<ForgotResponse>, t: Throwable) {
+                if (ItemName != null) {
+                    ApiManager.instance.orderNow(token, ItemName)
+                        .enqueue(object : Callback<ForgotResponse> {
+                            override fun onFailure(call: Call<ForgotResponse>, t: Throwable) {
 
-                            Log.d("res", "" + t)
-                        }
+                                Log.d("res", "" + t)
+                            }
 
-                        override fun onResponse(
-                            call: Call<ForgotResponse>,
-                            response: Response<ForgotResponse>
-                        ) {
-                            var res = response
+                            override fun onResponse(
+                                call: Call<ForgotResponse>,
+                                response: Response<ForgotResponse>
+                            ) {
+                                var res = response
 
-                            if (res.body()?.status == 200) {
+                                if (res.body()?.status == 200) {
 
-                                Log.d("response check ", "" + response.body()?.status.toString())
-                                showToast(applicationContext, res.body()?.user_msg)
-                                val i = Intent(applicationContext, AddToCart::class.java)
-                                startActivity(i)
-                                Log.d("kjsfgxhufb", response.body()?.user_msg.toString())
-                            } else {
-                                try {
-                                    val jObjError =
-                                        JSONObject(response.errorBody()!!.string())
+                                    Log.d("response check ", "" + response.body()?.status.toString())
+                                    showToast(applicationContext, res.body()?.user_msg)
+                                    val i = Intent(applicationContext, AddToCart::class.java)
+                                    startActivity(i)
+                                    Log.d("kjsfgxhufb", response.body()?.user_msg.toString())
+                                } else {
+                                    try {
+                                        val jObjError =
+                                            JSONObject(response.errorBody()!!.string())
 
-                                    showToast(applicationContext, jObjError.getString("user_msg"))
+                                        showToast(applicationContext, jObjError.getString("user_msg"))
 
-                                } catch (e: Exception) {
-                                    showToast(applicationContext, e.message)
-                                    Log.e("errorrr", e.message)
+                                    } catch (e: Exception) {
+                                        showToast(applicationContext, e.message)
+                                        e.message?.let { it1 -> Log.e("errorrr", it1) }
+                                    }
                                 }
                             }
-                        }
-                    })
+                        })
+                }
             }
         }
     }

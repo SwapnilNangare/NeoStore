@@ -44,7 +44,6 @@ class Chairs: BaseClassActivity(){
                     )
                 )
                 recyclerAdapter.setMovieListItems(t?.data as MutableList<TableData>)
-
                 recyclerView.adapter = recyclerAdapter
             }
 

@@ -22,8 +22,7 @@ class MyAccountViewModel(context: Application) : AndroidViewModel(context) {
     }
 
     fun loadAccountData() {
-        val token: String =
-            SharedPrefManager.getInstance(getApplication()).user.access_token.toString()
+        val token: String = SharedPrefManager.getInstance(getApplication()).user.access_token.toString()
         ApiManager.instance3.fetchUser(token)
             .enqueue(object : Callback<MyAccountBaseResponse> {
                 override fun onFailure(call: Call<MyAccountBaseResponse>, t: Throwable) {
@@ -49,7 +48,7 @@ class MyAccountViewModel(context: Application) : AndroidViewModel(context) {
                                 Toast.LENGTH_LONG
                             ).show()
                         } catch (e: Exception) {
-                            Log.e("errorrr", e.message)
+                            Log.e("errorrr", e.message.toString())
                         }
                     }
                 }

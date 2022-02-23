@@ -24,17 +24,14 @@ class CustomDetailAdapter(
 
     // If you want first item of recyclerview selected by defualt
     private var selectedPos: Int = 0
-    //private val selectedItems = SparseBooleanArray()
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val mView: View
-
         val avatar: ImageView
         val relativeitem: RelativeLayout
 
         init {
             mView = itemView
-
             avatar = mView.findViewById(R.id.view3)
             relativeitem = mView.findViewById(R.id.relativeitem)
 
@@ -71,7 +68,6 @@ class CustomDetailAdapter(
 
     override fun getItemCount(): Int {
         return dataList.size
-        //return (dataList == null) ? 0 : dataList.size();
     }
 
     init {

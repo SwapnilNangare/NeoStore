@@ -12,18 +12,16 @@ interface ForgotPasswordApi {
 
     @FormUrlEncoded
     @POST("users/forgot")
-    fun emailForgotpwd(@Field("email") email:String)
+    fun emailForgotPwd(@Field("email") email:String)
             : Call<ForgotResponse>
 
 
     @FormUrlEncoded
     @POST("order")
-    fun ordernow(
+    fun orderNow(
         @Header("access_token") token: String,
-
         @Field("address") address: String
-    )
-            : Call<ForgotResponse>
+    ): Call<ForgotResponse>
 
 
 

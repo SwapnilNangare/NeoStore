@@ -24,11 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.neostore.activities.login_screen.LoginActivity"
-
-            >
-
-        </activity>
+        <activity android:name="com.example.neostore.activities.login_screen.LoginActivity"></activity>
         <activity
             android:name="com.example.neostore.activities.register_screen.RegisterActivity"
             android:launchMode="singleTop"
@@ -173,14 +169,7 @@
             android:theme="@style/AppTheme1" />
 
 
-        <activity
-            android:name="com.example.neostore.activities.product_details.FavouriteProduct"
-            android:launchMode="singleTop"
-            android:parentActivityName=".activities.home_screen.HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.neostore.activities.home_screen.HomeActivity" />
-        </activity>
+
     </application>
 
 </manifest>

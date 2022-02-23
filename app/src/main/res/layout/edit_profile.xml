@@ -10,20 +10,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/relative">
+
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbartable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/toolbartable"
             android:background="@color/colorPrimary">
+
             <TextView
+                android:id="@+id/action_bar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:id="@+id/action_bar_title"
                 android:text="Edit Profile"
-                android:textStyle="bold"
                 android:textColor="#ffffff"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -71,6 +73,7 @@ android:layout_marginTop="60px"
     </RelativeLayout>
 
     <EditText
+        android:id="@+id/firstname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -79,7 +82,6 @@ android:layout_marginTop="60px"
         android:background="@drawable/edit_text_border"
         android:padding="8dp"
         android:layout_below="@id/constraint"
-        android:id="@+id/firstname"
         android:textColor="#FFFFFF"
         android:hint="First name"
         android:textColorHint="#FFFFFF"
@@ -157,7 +159,7 @@ android:layout_marginTop="60px"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_below="@id/forgotemailedt"
+        android:layout_below="@id/forgotEmailEdt"
         android:layout_marginTop="60px"
         android:background="@drawable/mybutton"
         android:text="SUBMIT"

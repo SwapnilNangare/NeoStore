@@ -56,19 +56,17 @@ class EditProfile : BaseClassActivity() {
         val myCalendar: Calendar = Calendar.getInstance()
 
         val edittext1 = findViewById(R.id.dob) as EditText
-        val date =
-            OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        val date = OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 myCalendar.set(Calendar.YEAR, year)
                 myCalendar.set(Calendar.MONTH, monthOfYear)
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                val myFormat = "dd-MM-yyyy" //In which you need put here
+                val myFormat = "dd-MM-yyyy"
                 val sdf = SimpleDateFormat(myFormat, Locale.US)
                 edittext1.setText(sdf.format(myCalendar.getTime()))
             }
 
         edittext1.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-
                 DatePickerDialog(
                     this@EditProfile, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
@@ -79,9 +77,7 @@ class EditProfile : BaseClassActivity() {
         val edit = edittext1.text
         profile = findViewById<View>(R.id.profilepic) as ImageView
 
-
-        val token: String =
-            SharedPrefManager.getInstance(applicationContext).user.access_token.toString()
+        val token: String = SharedPrefManager.getInstance(applicationContext).user.access_token.toString()
         ApiManager.instance3.fetchUser(token)
             .enqueue(object : Callback<MyAccountBaseResponse> {
                 override fun onFailure(call: Call<MyAccountBaseResponse>, t: Throwable) {
@@ -98,8 +94,6 @@ class EditProfile : BaseClassActivity() {
                     var res = response
 
                     if (res.body()?.status == 200) {
-                        //  val retro: List<Myaccount_data> = response.body().getData()
-
                         val retro: MyAccountData = res.body()!!.data
                         val retro1: UserData = retro.user_data
                         Glide.with(applicationContext).load(retro1.profile_pic)
@@ -115,7 +109,7 @@ class EditProfile : BaseClassActivity() {
                             )
                         } catch (e: Exception) {
                             showToast(applicationContext, e.message)
-                            Log.e("errorrr", e.message)
+                            Log.e("errorrr", e.message.toString())
                         }
                     }
                 }
@@ -175,7 +169,7 @@ class EditProfile : BaseClassActivity() {
 
             val body: MultipartBody.Part =
                 MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
-            ApiManager.instance3.useredit(token, map)
+            ApiManager.instance3.userEdit(token, map)
                 .enqueue(object : Callback<LoginResponse> {
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         Log.d("res", "" + t)
@@ -200,7 +194,7 @@ class EditProfile : BaseClassActivity() {
 
                             } catch (e: Exception) {
                                 showToast(applicationContext, e.message)
-                                Log.e("errorrr", e.message)
+                                e.message?.let { it1 -> Log.e("errorrr", it1) }
                             }
                         }
 

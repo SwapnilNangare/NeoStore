@@ -76,7 +76,7 @@ class ProductAdapter(val context: Context, var tablelist: List<TableData>) :
         val productprice: TextView = itemView!!.findViewById(R.id.title2)
         val rate: RatingBar = itemView!!.findViewById(R.id.ratingbar)
         val image: ImageView = itemView!!.findViewById(R.id.image)
-        //   val  fav_btn:ImageView=itemView!!.findViewById(R.id.fav_btn);
+
 
     }
 

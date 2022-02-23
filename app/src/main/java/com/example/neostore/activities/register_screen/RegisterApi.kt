@@ -19,5 +19,5 @@ interface RegisterApi {
         @Field("gender") gender: String,
         @Field("phone_no") phone_no: String
     )
-            : Call<LoginResponse>
+    : Call<LoginResponse>
 }

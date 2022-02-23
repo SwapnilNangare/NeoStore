@@ -16,8 +16,8 @@ class ForgotPassword : BaseClassActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.forgot_password)
 
-        var forgotemailedt =findViewById<EditText>(R.id.forgotemailedt)
-        var sendmailforgot =findViewById<Button>(R.id.sendmailforgot)
+        var forgotemailedt =findViewById<EditText>(R.id.forgotEmailEdt)
+        var sendmailforgot =findViewById<Button>(R.id.sendMailForgot)
         model = ViewModelProvider(this)[UserViewModel::class.java]
 
         model.forgotPasswordData.observe(this, object : Observer<ForgotResponse?> {

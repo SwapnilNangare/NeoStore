@@ -43,7 +43,9 @@
         android:layout_marginRight="26px"
         android:textSize="25dp"
         android:id="@+id/text1"
-        tools:ignore="MissingConstraints"></TextView>
+        tools:ignore="MissingConstraints">
+
+    </TextView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         app:layout_constraintTop_toBottomOf="@id/text1"

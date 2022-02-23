@@ -22,7 +22,7 @@ object ApiManager {
         .addConverterFactory(GsonConverterFactory.create())
 
     // retrofit 1
-    val retrofit1: Retrofit = builder.build()
+    //val retrofit1: Retrofit = builder.build()
     val instance: ForgotPasswordApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -33,7 +33,7 @@ object ApiManager {
     }
 
     // retrofit2
-    val retrofit2: Retrofit = builder.build()
+
     val instance2: LoginApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -44,7 +44,7 @@ object ApiManager {
     }
     //retrofit3
 
-    val retrofit3: Retrofit = builder.build()
+
     val instance3: MyAccountApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -55,7 +55,7 @@ object ApiManager {
     }
     //retrofit4
 
-    val retrofit4: Retrofit = builder.build()
+
     val instance4: MyCartApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -66,7 +66,7 @@ object ApiManager {
     }
 
     //  retrofit5
-    val retrofit5: Retrofit = builder.build()
+
     val instance5: OrderApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -77,7 +77,7 @@ object ApiManager {
     }
 
     //  retrofit6
-    val retrofit6: Retrofit = builder.build()
+
     val instance6: OrderDetailApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -88,7 +88,7 @@ object ApiManager {
     }
 
     //  retrofit7
-    val retrofit7: Retrofit = builder.build()
+
     val instance7: ProductDetailsApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -99,7 +99,7 @@ object ApiManager {
     }
 
     //  retrofit8
-    val retrofit8: Retrofit = builder.build()
+
     val instance8: RegisterApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -121,7 +121,6 @@ object ApiManager {
     }
 
     //  retrofit10
-    val retrofit10: Retrofit = builder.build()
     val instance10: TableApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

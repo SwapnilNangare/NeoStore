@@ -10,7 +10,5 @@ interface TableApi {
     fun getAllPhotos(
         @Query("product_category_id") product_category_id: String,
         @Query("value") value: Int
-    )
-
-            : Call<TableResponse>
+    ): Call<TableResponse>
 }

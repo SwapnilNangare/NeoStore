@@ -30,7 +30,6 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.example.neostore.BuildConfig
 import com.example.neostore.R
 import com.example.neostore.activities.api_manager.ApiManager
-import com.example.neostore.activities.product_details.room_prod_dB.FavProdDB
 import com.example.neostore.activities.shared_pref_manager.SharedPrefManager
 import com.example.neostore.activities.table.TableData
 import com.example.neostore.base.BaseClassActivity
@@ -45,11 +44,6 @@ import java.util.concurrent.Executors
 
 class ProductDetails : BaseClassActivity() {
     private var rateValue = 0.0f
-
-    companion object {
-        var favoriteDatabase: FavProdDB? = null
-
-    }
 
     val NUM_OF_THREADS = 4
     var executorService = Executors.newFixedThreadPool(NUM_OF_THREADS)
@@ -80,12 +74,12 @@ class ProductDetails : BaseClassActivity() {
         val description: String = intent1.getStringExtra("description")
         val cost: Int = intent1.getIntExtra("cost", -1)
         val rating: String = intent1.getStringExtra("rating")
-        val view_count: Int = intent1.getIntExtra("view_count", -1)
+        val viewCount: Int = intent1.getIntExtra("view_count", -1)
         val created: String = intent1.getStringExtra("created")
         val modified: String = intent1.getStringExtra("modified")
-        val product_images: String = intent1.getStringExtra("image")
-        Log.e("product_images", product_images)
-        Log.e("sdjhj", product_images)
+        val productImages: String = intent1.getStringExtra("image")
+        Log.e("product_images", productImages)
+        Log.e("sdjhj", productImages)
         Log.e("checkname", name)
         val retroPhoto = TableData(
             id,
@@ -95,33 +89,25 @@ class ProductDetails : BaseClassActivity() {
             description,
             cost,
             rating,
-            view_count,
+            viewCount,
             created,
             modified,
-            product_images
+            productImages
         )
 
 
         val text = findViewById<TextView>(R.id.text1) as TextView
         val text2 = findViewById<TextView>(R.id.text2) as TextView
-        val ratebutton = findViewById<Button>(R.id.rate)
-        val buynow = findViewById<Button>(R.id.buynow)
+        val rateButton = findViewById<Button>(R.id.rate)
+        val buyNow = findViewById<Button>(R.id.buynow)
 
 
-
-
-        LocalBroadcastManager.getInstance(this).registerReceiver(
-            mMessageReceiver,
-            IntentFilter("custom-message")
-        )
-
-
-
-
+        LocalBroadcastManager.getInstance(this)
+            .registerReceiver(mMessageReceiver, IntentFilter("custom-message"))
         imagemain = findViewById<ImageView>(R.id.viewimage_main) as ImageView
 
 
-        ApiManager.instance7.fetchUserdetail(id)
+        ApiManager.instance7.fetchUserDetail(id)
             .enqueue(object : Callback<ProductBaseResponse> {
                 override fun onFailure(call: Call<ProductBaseResponse>, t: Throwable) {
                     Log.d("res", "" + t)
@@ -149,7 +135,6 @@ class ProductDetails : BaseClassActivity() {
                             imagemain!!
                         );
 
-
                     shareimage.setOnClickListener {
                         Glide.with(applicationContext).asBitmap()
                             .load(
@@ -161,7 +146,6 @@ class ProductDetails : BaseClassActivity() {
 
                                 override fun onLoadCleared(placeholder: Drawable?) {
 
-                                    // do your stuff, you can load placeholder image here
                                 }
 
                                 override fun onResourceReady(
@@ -215,12 +199,12 @@ class ProductDetails : BaseClassActivity() {
                     val retro11: List<ProductImagesResponse> =
                         response?.body()!!.data.product_images
                     generateDataList(retro11)
-                    ratebutton.setOnClickListener {
-                        ratebutton.setBackgroundResource(R.drawable.mybuttonred)
+                    rateButton.setOnClickListener {
+                        rateButton.setBackgroundResource(R.drawable.mybuttonred)
                         // change to original after 5 secs.
                         Handler().postDelayed(
                             Runnable {
-                                ratebutton.setBackgroundResource(R.drawable.mybutton)
+                                rateButton.setBackgroundResource(R.drawable.mybutton)
                             },
                             1000
                         )
@@ -237,16 +221,9 @@ class ProductDetails : BaseClassActivity() {
                                 0
                             ).image
                         ).into(imagerate);
-                        // val wmbPreference1 = PreferenceManager.getDefaultSharedPreferences(
-                        //     applicationContext
-                        // )
-                        // val rating: Float = wmbPreference1.getFloat("numStars", 0f)
                         ratebar.setRating(getDefaults("numStars", applicationContext))
                         ratebar.onRatingBarChangeListener =
                             OnRatingBarChangeListener { ratingBar, rating1, fromUser ->
-                                //  val editor = wmbPreference1.edit();
-                                //  editor.putFloat("numStars", rating1);
-                                //  editor.commit();
                                 setDefaults("numStars", rating1, applicationContext)
                                 rateValue = rating1
                             }
@@ -254,7 +231,6 @@ class ProductDetails : BaseClassActivity() {
 
                         mBuild.setView(mView)
                         val dialog: AlertDialog = mBuild.create()
-                        //   btnSubmit.setOnClickListener(View.OnClickListener { dialog .dismiss() })
 
                         val btnSubmit =
                             mView.findViewById(R.id.btnSubRating) as Button
@@ -302,12 +278,12 @@ class ProductDetails : BaseClassActivity() {
 
 
                     }
-                    buynow.setOnClickListener {
-                        buynow.setBackgroundResource(R.drawable.mybuttonred)
+                    buyNow.setOnClickListener {
+                        buyNow.setBackgroundResource(R.drawable.mybuttonred)
                         // change to original after 5 secs.
                         Handler().postDelayed(
                             Runnable {
-                                buynow.setBackgroundResource(R.drawable.mybutton)
+                                buyNow.setBackgroundResource(R.drawable.mybutton)
                             },
                             1000
                         )
@@ -336,8 +312,6 @@ class ProductDetails : BaseClassActivity() {
                         mBuild.setView(mView)
                         val dialog: AlertDialog = mBuild.create()
 
-
-
                         btnSubmit.setOnClickListener(object : View.OnClickListener {
                             override fun onClick(v: View?) {
                                 val value: String = buynumber.getText().toString()
@@ -348,7 +322,7 @@ class ProductDetails : BaseClassActivity() {
                                         SharedPrefManager.getInstance(
                                             applicationContext
                                         ).user.access_token.toString()
-                                    ApiManager.instance7.buynow(token, id, finalValue)
+                                    ApiManager.instance7.buyNow(token, id, finalValue)
                                         .enqueue(object : Callback<ResponseBaseCartAdd> {
                                             override fun onFailure(
                                                 call: Call<ResponseBaseCartAdd>,
@@ -406,7 +380,6 @@ class ProductDetails : BaseClassActivity() {
                             }
                         })
                         dialog.show()
-                        //   dialog.getWindow()?.setLayout(1000, 1700);
                         dialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
 
                     }
@@ -432,19 +405,17 @@ class ProductDetails : BaseClassActivity() {
         override fun onReceive(context: Context?, intent: Intent) {
             // Get extra data included in the Intent
 
-            val ItemName = intent.getStringExtra("item")
-            Glide.with(applicationContext).load(ItemName)
+            val itemName = intent.getStringExtra("item")
+            Glide.with(applicationContext).load(itemName)
                 .thumbnail(0.5f)
 
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imagemain!!);
             shareimage.setOnClickListener {
-                Glide.with(applicationContext).asBitmap().load(ItemName)
+                Glide.with(applicationContext).asBitmap().load(itemName)
                     .into(object : CustomTarget<Bitmap>() {
 
                         override fun onLoadCleared(placeholder: Drawable?) {
-
-                            // do your stuff, you can load placeholder image here
                         }
 
                         override fun onResourceReady(

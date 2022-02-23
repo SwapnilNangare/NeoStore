@@ -10,9 +10,8 @@ interface ResetPasswordApi {
 
     @FormUrlEncoded
     @POST("users/change")
-    fun resetpassword(
+    fun resetPassword(
         @Header("access_token") token: String,
-
         @Field("old_password") old_password: String,
         @Field("password") password: String,
         @Field("confirm_password") confirm_password: String

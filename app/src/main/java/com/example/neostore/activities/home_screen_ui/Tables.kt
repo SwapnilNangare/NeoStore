@@ -46,9 +46,7 @@ class Tables : BaseClassActivity() {
                 recyclerAdapter = ProductAdapter(applicationContext, tablelist)
                 recyleview.layoutManager = LinearLayoutManager(applicationContext)
                 recyclerView.addItemDecoration(
-                    DividerItemDecoration(
-                        recyclerView.context,
-                        DividerItemDecoration.VERTICAL
+                    DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL
                     )
                 )
                 recyclerAdapter.setMovieListItems(t?.data as MutableList<TableData>)
@@ -76,10 +74,7 @@ class Tables : BaseClassActivity() {
             searchView.findViewById<View>(R.id.search_src_text) as EditText
         searchEditText.setTextColor(resources.getColor(R.color.white))
         searchEditText.setHintTextColor(resources.getColor(R.color.white))
-      //  searchEditText.setPadding(0,0,0,-40)
-       // searchEditText.setBackgroundTintList(ContextCompat.getColorStateList(this@Tables, R.color.white));
-        val searchplate =
-            searchView.findViewById(R.id.search_plate) as View
+        val searchplate = searchView.findViewById(R.id.search_plate) as View
         searchplate.background.setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY)
         val searchClose: ImageView =
             searchView.findViewById(R.id.search_close_btn)

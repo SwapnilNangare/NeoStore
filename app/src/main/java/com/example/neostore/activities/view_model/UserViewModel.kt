@@ -18,8 +18,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserViewModel(context: Application, private val savedStateHandle: SavedStateHandle) :
-    AndroidViewModel(context) {
+class UserViewModel(context: Application, private val savedStateHandle: SavedStateHandle) :AndroidViewModel(context) {
 
     private var _loginResponseData = MutableLiveData<LoginResponse?>()
     private var _regResponseData = MutableLiveData<LoginResponse?>()
@@ -117,7 +116,7 @@ class UserViewModel(context: Application, private val savedStateHandle: SavedSta
                                 Toast.LENGTH_LONG
                             ).show()
                         } catch (e: Exception) {
-                            Log.e("errorrr", e.message)
+                            Log.e("error", e.message)
                         }
                     }
                 }
@@ -185,7 +184,7 @@ class UserViewModel(context: Application, private val savedStateHandle: SavedSta
     }
 
     fun loadForgot(email: String) {
-        ApiManager.instance.emailForgotpwd(email)
+        ApiManager.instance.emailForgotPwd(email)
             .enqueue(object : Callback<ForgotResponse> {
                 override fun onFailure(call: Call<ForgotResponse>, t: Throwable) {
 
@@ -229,11 +228,8 @@ class UserViewModel(context: Application, private val savedStateHandle: SavedSta
     }
 
     fun resetPwd(old: String, newpwd: String, confpwd: String) {
-        val token: String =
-            SharedPrefManager.getInstance(
-                getApplication()
-            ).user.access_token.toString()
-        ApiManager.instance9.resetpassword(token, old, newpwd, confpwd)
+        val token: String = SharedPrefManager.getInstance(getApplication()).user.access_token.toString()
+        ApiManager.instance9.resetPassword(token, old, newpwd, confpwd)
             .enqueue(object : Callback<ResetReponseBase> {
                 override fun onFailure(call: Call<ResetReponseBase>, t: Throwable) {
                     Log.d("res", "" + t)

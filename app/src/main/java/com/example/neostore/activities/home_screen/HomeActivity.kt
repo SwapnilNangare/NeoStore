@@ -20,22 +20,23 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.neostore.R
 import com.example.neostore.activities.address.AddressAdapter
 import com.example.neostore.activities.address.CustomApplication
 import com.example.neostore.activities.api_manager.ApiManager
-import com.example.neostore.activities.login_screen.LoginActivity
-import com.example.neostore.activities.my_account.*
-import com.example.neostore.activities.my_cart.AddToCart
-import com.example.neostore.activities.my_cart.CartResponse
-import com.example.neostore.activities.order.OrderListActivity
-import com.example.neostore.activities.product_details.ProductDetails
-import com.example.neostore.activities.product_details.room_prod_dB.FavProdDB
-import com.example.neostore.activities.shared_pref_manager.SharedPrefManager
 import com.example.neostore.activities.home_screen_ui.Chairs
 import com.example.neostore.activities.home_screen_ui.Cupboards
 import com.example.neostore.activities.home_screen_ui.Sofa
 import com.example.neostore.activities.home_screen_ui.Tables
-import com.example.neostore.R
+import com.example.neostore.activities.login_screen.LoginActivity
+import com.example.neostore.activities.my_account.MyAccount
+import com.example.neostore.activities.my_account.MyAccountBaseResponse
+import com.example.neostore.activities.my_account.MyAccountData
+import com.example.neostore.activities.my_account.UserData
+import com.example.neostore.activities.my_cart.AddToCart
+import com.example.neostore.activities.my_cart.CartResponse
+import com.example.neostore.activities.order.OrderListActivity
+import com.example.neostore.activities.shared_pref_manager.SharedPrefManager
 import com.example.neostore.base.BaseClassActivity
 import com.google.android.material.navigation.NavigationView
 import com.viewpagerindicator.CirclePageIndicator
@@ -45,7 +46,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -57,17 +57,15 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
     private var currentState: Int = 0
 
 
-
     private lateinit var counterView: TextView
     var adapter: AddressAdapter? = null
 
-    private val IMAGES =
-        arrayOf<Int>(
-            R.drawable.slider_img1,
-            R.drawable.slider_img2,
-            R.drawable.slider_img3,
-            R.drawable.slider_img4
-        )
+    private val IMAGES = arrayOf<Int>(
+        R.drawable.slider_img1,
+        R.drawable.slider_img2,
+        R.drawable.slider_img3,
+        R.drawable.slider_img4
+    )
     var toolbar: Toolbar? = null
     var navigationView: NavigationView? = null
     var holderView: View? = null
@@ -83,15 +81,10 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
         if (!(SharedPrefManager.getInstance(this).isLoggedIn)) {
             val intent = Intent(applicationContext, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
             startActivity(intent)
             finish()
         }
 
-
-
-        ProductDetails.favoriteDatabase = Room.databaseBuilder(applicationContext,
-            FavProdDB::class.java, "myfavdb").allowMainThreadQueries().build()
 
         image1.setOnClickListener {
             val i = Intent(applicationContext, Tables::class.java)
@@ -111,8 +104,7 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         init()
-        toolbar =
-            findViewById<View>(R.id.toolbar) as Toolbar
+        toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         val hView = navigationView!!.getHeaderView(0)
@@ -137,7 +129,6 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
 
                     Log.d("res", "" + t)
 
-
                 }
 
                 override fun onResponse(
@@ -147,8 +138,6 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
                     var res = response
 
                     if (res.body()?.status == 200) {
-                        //  val retro: List<Myaccount_data> = response.body().getData()
-
                         val retro: MyAccountData = res.body()!!.data
                         val retro1: UserData = retro.user_data
                         Glide.with(applicationContext).load(retro1.profile_pic)
@@ -156,14 +145,13 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
                             .placeholder(R.drawable.ic_launcher_foreground)
 
                             .into(hView.findViewById(R.id.nav_header_imageView))
-                        //image.setImageResource(retro1.profile_pic)
                     } else {
                         try {
                             val jObjError =
                                 JSONObject(response.errorBody()!!.string())
                         } catch (e: Exception) {
                             showToast(applicationContext, e.message)
-                            Log.e("errorrr", e.message)
+                            Log.e("errorrr", e.message.toString())
                         }
                     }
                 }
@@ -285,7 +273,6 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
                     var res = response
 
                     if (res.body()?.status == 200) {
-                        //  val retro: List<Myaccount_data> = response.body().getData()
 
                         val retro: MyAccountData = res.body()!!.data
                         val retro1: UserData = retro.user_data
@@ -304,7 +291,7 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
                             showToast(applicationContext, jObjError.getString("user_msg"))
                         } catch (e: Exception) {
                             showToast(applicationContext, e.message)
-                            Log.e("errorrr", e.message)
+                            Log.e("errorrr", e.message.toString())
                         }
                     }
                 }
@@ -502,9 +489,6 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
         SharedPrefManager.getInstance(application).clear()
 
 
-        ProductDetails.favoriteDatabase?.favoriteDao()?.delete()/////////
-
-
         val intent = Intent(applicationContext, LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
@@ -513,14 +497,5 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    private fun buildDatabase(appcontext: Context, userId: String): FavProdDB {
-        return Room.databaseBuilder(appcontext, FavProdDB::class.java, "muhhg" + "_" + userId)
-            .addCallback(object : RoomDatabase.Callback() {
-                override fun onCreate(db: SupportSQLiteDatabase) {
-                    super.onCreate(db)
-                }
-            })
-            .build()
 
-    }
 }

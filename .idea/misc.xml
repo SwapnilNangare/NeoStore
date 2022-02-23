@@ -4,8 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/add_address.xml" value="0.175" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/custom_toolbar1.xml" value="0.1" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/edit_profile.xml" value="0.17685185185185184" />
         <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/editprofile.xml" value="0.1796875" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/forgot_password.xml" value="0.1796875" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/home_activity.xml" value="0.17685185185185184" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/login_activity.xml" value="0.1796875" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/my_account.xml" value="0.1796875" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/product_details_activity.xml" value="0.1796875" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/register_activity.xml" value="0.1796875" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/reset_password_layout.xml" value="0.1796875" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/slider_items.xml" value="0.1796875" />
         <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/table_activity.xml" value="0.15648148148148147" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/table_recycle_item.xml" value="0.17685185185185184" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/menu/menu.xml" value="0.1796875" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/menu/menu_main.xml" value="0.1796875" />
         <entry key="..\:/Users/X270/Downloads/Data/NeoStore-master/NeoStore-master/app/src/main/res/drawable-v24/edit_text_border.xml" value="0.17407407407407408" />
         <entry key="..\:/Users/X270/Downloads/Data/NeoStore-master/NeoStore-master/app/src/main/res/layout/add_to_cart.xml" value="0.10740740740740741" />
         <entry key="..\:/Users/X270/Downloads/Data/NeoStore-master/NeoStore-master/app/src/main/res/layout/addaddress.xml" value="0.12222222222222222" />

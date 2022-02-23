@@ -3,17 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!-- <TextView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="@string/cart_is_empty"
-         android:textSize="60dp"
-         android:textColor="@color/colorPrimaryDark"
-         android:layout_centerInParent="true"
-         android:id="@+id/emptytext">
-
-     </TextView>
-     -->
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
@@ -37,7 +26,9 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone"></LinearLayout>
+        android:visibility="gone">
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyleview"
