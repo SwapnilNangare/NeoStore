@@ -106,17 +106,13 @@ class AddressActivity : BaseClassActivity() {
     var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             val token: String =
-                SharedPrefManager.getInstance(
-                    applicationContext
-                ).user.access_token.toString()
+                SharedPrefManager.getInstance(applicationContext).user.access_token.toString()
             val ItemName = intent.getStringExtra("item1")
             ordernow.setOnClickListener {
 
                 if (ItemName != null) {
-                    ApiManager.instance.orderNow(token, ItemName)
-                        .enqueue(object : Callback<ForgotResponse> {
+                    ApiManager.instance.orderNow(token, ItemName).enqueue(object : Callback<ForgotResponse> {
                             override fun onFailure(call: Call<ForgotResponse>, t: Throwable) {
-
                                 Log.d("res", "" + t)
                             }
 

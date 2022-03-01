@@ -17,14 +17,13 @@ class  AddAddressActivity : BaseClassActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_address)
 
-        var mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbartable);
-        setSupportActionBar(mActionBarToolbar);
+        var mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbartable)
+        setSupportActionBar(mActionBarToolbar)
         setScreenTitle("Add Address")
 
         val editText: EditText = findViewById(R.id.longaddress)
 
         val application = application as CustomApplication
-
         saveaddress.setOnClickListener {
             val address = Address()
             address.address = editText.getText().toString()
@@ -38,7 +37,6 @@ class  AddAddressActivity : BaseClassActivity() {
                 longaddress.requestFocus()
                 return@setOnClickListener
             }
-
 
             lifecycleScope.launch {
                  application.addressDao.addData(address)
