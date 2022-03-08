@@ -1,6 +1,5 @@
 package com.example.neostore.activities.home_screen
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -14,9 +13,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -108,17 +104,17 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
         drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         val hView = navigationView!!.getHeaderView(0)
-        val nav_user = hView.findViewById<View>(R.id.nav_header_textView) as TextView
-        val nav_email = hView.findViewById<View>(R.id.text_nav_2) as TextView
-        val nav_header_imagehg = hView.findViewById<View>(R.id.nav_header_imageView)
-        val nav_user_text: String =
+        val navUser = hView.findViewById<View>(R.id.nav_header_textView) as TextView
+        val navEmail = hView.findViewById<View>(R.id.text_nav_2) as TextView
+        val navHeaderImagehg = hView.findViewById<View>(R.id.nav_header_imageView)
+        val navUserText: String =
             SharedPrefManager.getInstance(applicationContext).user.first_name.toString() + " " + SharedPrefManager.getInstance(
                 applicationContext
             ).user.last_name.toString()
-        val nav_user_email: String =
+        val navUserEmail: String =
             SharedPrefManager.getInstance(applicationContext).user.email.toString()
-        nav_user.setText(nav_user_text)
-        nav_email.setText(nav_user_email)
+        navUser.setText(navUserText)
+        navEmail.setText(navUserEmail)
 
 
         val token: String =
@@ -250,9 +246,9 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
 
         navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         val hView = navigationView!!.getHeaderView(0)
-        val nav_user = hView.findViewById<View>(R.id.nav_header_textView) as TextView
-        val nav_email = hView.findViewById<View>(R.id.text_nav_2) as TextView
-        val nav_header_imagehg = hView.findViewById<View>(R.id.nav_header_imageView)
+        val navUser = hView.findViewById<View>(R.id.nav_header_textView) as TextView
+        val navEmail = hView.findViewById<View>(R.id.text_nav_2) as TextView
+        val navHeaderImageHg = hView.findViewById<View>(R.id.nav_header_imageView)
 
 
         val token: String =
@@ -276,8 +272,8 @@ class HomeActivity : BaseClassActivity(), NavigationView.OnNavigationItemSelecte
 
                         val retro: MyAccountData = res.body()!!.data
                         val retro1: UserData = retro.user_data
-                        nav_user.setText(retro1.first_name + " " + retro1.last_name)
-                        nav_email.setText(retro1.email)
+                        navUser.setText(retro1.first_name + " " + retro1.last_name)
+                        navEmail.setText(retro1.email)
                         Glide.with(applicationContext).load(retro1.profile_pic)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .placeholder(R.drawable.ic_launcher_foreground)

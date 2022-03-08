@@ -25,12 +25,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.login_activity)
 
         val button = findViewById<ImageView>(R.id.plusbutton)
-        val forgotpassword = findViewById<TextView>(R.id.forgotpassword)
+        val forgotPassword = findViewById<TextView>(R.id.forgotpassword)
         button.setOnClickListener {
             val i = Intent(applicationContext, RegisterActivity::class.java)
             startActivity(i)
         }
-        forgotpassword.setOnClickListener {
+        forgotPassword.setOnClickListener {
             val i = Intent(applicationContext, ForgotPassword::class.java)
             startActivity(i)
         }

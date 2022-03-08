@@ -22,7 +22,6 @@ object ApiManager {
         .addConverterFactory(GsonConverterFactory.create())
 
     // retrofit 1
-    //val retrofit1: Retrofit = builder.build()
     val instance: ForgotPasswordApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

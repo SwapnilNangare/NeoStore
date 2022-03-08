@@ -29,9 +29,9 @@ class  AddAddressActivity : BaseClassActivity() {
             address.address = editText.getText().toString()
 
 
-            val longaddresss = longaddress.text.toString().trim()
+            val longAddresss = longaddress.text.toString().trim()
 
-            if (longaddresss.isEmpty()) {
+            if (longAddresss.isEmpty()) {
                 showToast(applicationContext,"address is missing")
                 longaddress.error = "address required"
                 longaddress.requestFocus()
