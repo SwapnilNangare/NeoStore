@@ -41,10 +41,8 @@ class AddToCart : BaseClassActivity() {
     fun loadCart() {
 
         val model = ViewModelProvider(this)[CartViewModel::class.java]
-
         model.cartList?.observe(this, object : Observer<CartResponse> {
             override fun onChanged(t: CartResponse?) {
-
                 generateDataList(t?.data?.toMutableList())
                 totalamount.setText(t?.total.toString())
             }

@@ -39,7 +39,6 @@ class AddressAdapter(context: Context): RecyclerSwipeAdapter<AddressAdapter.View
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.radio.setChecked(lastSelectedPosition == position);
-
         val fl: Address = addresses[position]
         viewHolder.tv.setText(fl.address)
         viewHolder.radio.setOnClickListener(View.OnClickListener {
@@ -51,8 +50,6 @@ class AddressAdapter(context: Context): RecyclerSwipeAdapter<AddressAdapter.View
 
             intent.putExtra("item1", fl.address)
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
-
-
         })
         if (index === position) {
             viewHolder.linearLayout.setBackgroundColor(Color.parseColor("#FFFFFF"))
@@ -92,16 +89,11 @@ class AddressAdapter(context: Context): RecyclerSwipeAdapter<AddressAdapter.View
             val application = context as CustomApplication
 
             application.database.AddressDao().delete(fl)//here you delete from DB so its gone for good
-
-
-
             notifyDataSetChanged()
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, addresses.size)
             mItemManger.closeAllItems()
-            Toast.makeText(
-                view.context,
-                "Deleted " + viewHolder.tv.getText().toString(),
+            Toast.makeText(view.context, "Deleted " + viewHolder.tv.getText().toString(),
                 Toast.LENGTH_SHORT
             ).show()
             
@@ -132,8 +124,7 @@ class AddressAdapter(context: Context): RecyclerSwipeAdapter<AddressAdapter.View
 
         }    }
 
-    fun updateData(addresses:
-                   MutableList<Address>) {
+    fun updateData(addresses: MutableList<Address>) {
         this.addresses = addresses
 
 

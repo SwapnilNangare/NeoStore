@@ -39,13 +39,9 @@ class OrderDetailList : BaseClassActivity() {
 
 
         //  supportActionBar!!.title = id
-        Log.e("getid", id)
-        val token: String =
-            SharedPrefManager.getInstance(
-                applicationContext
-            ).user.access_token.toString()
-        ApiManager.instance6.fetchOrderDetail(token, id).enqueue(object :
-            Callback<OrderDetailResponseBase> {
+        Log.e("getId", id)
+        val token: String = SharedPrefManager.getInstance(applicationContext).user.access_token.toString()
+        ApiManager.instance6.fetchOrderDetail(token, id).enqueue(object : Callback<OrderDetailResponseBase> {
             override fun onFailure(call: Call<OrderDetailResponseBase>, t: Throwable) {
                 Toast.makeText(applicationContext, "falied", Toast.LENGTH_LONG).show()
             }
@@ -56,7 +52,6 @@ class OrderDetailList : BaseClassActivity() {
             ) {
 
                 if (response.isSuccessful) {
-
                     var res = response
                     Log.e("checkresponsee", response.body().toString())
                     val retro: List<OrderDetailRes> = response.body()!!.data.order_details

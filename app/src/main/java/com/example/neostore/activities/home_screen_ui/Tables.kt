@@ -70,8 +70,7 @@ class Tables : BaseClassActivity() {
         menuInflater.inflate(R.menu.menu_main, menu)
         val search: MenuItem = menu.findItem(R.id.search)
         val searchView: SearchView = MenuItemCompat.getActionView(search) as SearchView
-        val searchEditText =
-            searchView.findViewById<View>(R.id.search_src_text) as EditText
+        val searchEditText = searchView.findViewById<View>(R.id.search_src_text) as EditText
         searchEditText.setTextColor(resources.getColor(R.color.white))
         searchEditText.setHintTextColor(resources.getColor(R.color.white))
         val searchplate = searchView.findViewById(R.id.search_plate) as View

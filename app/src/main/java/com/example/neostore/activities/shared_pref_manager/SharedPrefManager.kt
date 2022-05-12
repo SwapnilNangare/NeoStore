@@ -57,16 +57,19 @@ class SharedPrefManager private constructor(private val sn: Context) {
         editor.putString("created", user.created)
         editor.putString("access_token", user.access_token)
 
-
         editor.apply()
+        //return boolean value commit() returns a boolean value of success or failure immediately by
+        //writing data synchronously
 
     }
 
     fun clear() {
         val sharedPreferences = sn.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.clear()
+        editor.clear() // It delete only values (means that keys are available) or it delete key value pair.
         editor.apply()
+
+
     }
 
     companion object {

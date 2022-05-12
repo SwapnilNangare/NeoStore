@@ -10,6 +10,5 @@ interface OrderDetailApi {
     fun fetchOrderDetail(
         @Header("access_token") token: String,
         @Query("order_id") order_id: String
-    )
-            : Call<OrderDetailResponseBase>
+    ):Call<OrderDetailResponseBase>
 }

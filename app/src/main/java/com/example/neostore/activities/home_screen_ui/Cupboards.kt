@@ -32,7 +32,6 @@ class Cupboards: BaseClassActivity() {
         setScreenTitle("CupBoards")
 
         recyclerView = findViewById(R.id.recyleview)
-
         val model = ViewModelProvider(this)[ProductViewModel::class.java]
 
         model.cupboard?.observe(this, object : Observer<TableResponse> {

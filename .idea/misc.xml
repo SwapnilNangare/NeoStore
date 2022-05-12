@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/drawable-v24/edit_text_border.xml" value="0.1265" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/drawable/buynowedt.xml" value="0.1265" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/drawable/dialog_bg.xml" value="0.1265" />
+        <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/drawable/ic_keyboard_arrow_left_black_24dp.xml" value="0.1265" />
         <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/add_address.xml" value="0.175" />
         <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/buy_now_dialog.xml" value="0.17685185185185184" />
         <entry key="..\:/Users/X270/AndroidStudioProjects/Swapnil NeoStore/app/src/main/res/layout/custom_toolbar1.xml" value="0.1" />

@@ -23,10 +23,10 @@ class CartViewModel (context: Application): AndroidViewModel(context) {
         }
     private fun loadCartList(){
         val token: String = SharedPrefManager.getInstance(getApplication()).user.access_token.toString()
-        ApiManager.instance4.listCart(token).enqueue(object :
-            Callback<CartResponse> {
+        ApiManager.instance4.listCart(token).enqueue(object : Callback<CartResponse> {
+
             override fun onFailure(call: Call<CartResponse>, t: Throwable) {
-                Toast.makeText(getApplication(), "falied", Toast.LENGTH_LONG).show()
+                Toast.makeText(getApplication(), "failed", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(

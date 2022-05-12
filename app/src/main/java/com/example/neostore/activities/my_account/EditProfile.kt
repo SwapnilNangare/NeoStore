@@ -67,8 +67,7 @@ class EditProfile : BaseClassActivity() {
 
         edittext1.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                DatePickerDialog(
-                    this@EditProfile, date, myCalendar
+                DatePickerDialog(this@EditProfile, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)
                 ).show()
@@ -81,12 +80,8 @@ class EditProfile : BaseClassActivity() {
         ApiManager.instance3.fetchUser(token)
             .enqueue(object : Callback<MyAccountBaseResponse> {
                 override fun onFailure(call: Call<MyAccountBaseResponse>, t: Throwable) {
-
                     Log.d("res", "" + t)
-
-
                 }
-
                 override fun onResponse(
                     call: Call<MyAccountBaseResponse>,
                     response: Response<MyAccountBaseResponse>
@@ -103,8 +98,7 @@ class EditProfile : BaseClassActivity() {
                         //image.setImageResource(retro1.profile_pic)
                     } else {
                         try {
-                            val jObjError =
-                                JSONObject(response.errorBody()!!.string())
+                            val jObjError = JSONObject(response.errorBody()!!.string())
                             showToast(applicationContext, jObjError.getString("user_msg")
                             )
                         } catch (e: Exception) {
@@ -121,51 +115,37 @@ class EditProfile : BaseClassActivity() {
 
         })
         editsubmit.setOnClickListener {
-            Toast.makeText(applicationContext, "this might take some time", Toast.LENGTH_LONG)
-                .show()
+            Toast.makeText(applicationContext, "this might take some time", Toast.LENGTH_LONG).show()
             progressDialog = ProgressDialog(this@EditProfile)
             progressDialog!!.setMessage("Loading....")
             progressDialog!!.show()
             progressDialog!!.setCanceledOnTouchOutside(false)
-            val first_name = firstname.text.toString().trim()
-            val last_name = lastname.text.toString().trim()
-
+            val firstName = firstname.text.toString().trim()
+            val lastName = lastname.text.toString().trim()
             val email = emailregister.text.toString().trim()
             val phone = phoneno.text.toString().trim()
 
             val profile = "data:image/png;base64," + convertToString()!!
-            val token: String =
-                SharedPrefManager.getInstance(
-                    applicationContext
-                ).user.access_token.toString()
-            val first_name1 =
-                RequestBody.create(MediaType.parse("text/plain"), first_name)
-            val last_name1 =
-                RequestBody.create(MediaType.parse("text/plain"), last_name)
-            val email1 =
-                RequestBody.create(MediaType.parse("text/plain"), email)
-            val dob1 =
-                RequestBody.create(MediaType.parse("text/plain"), edittext1.text.toString())
-            val phone_no1 =
-                RequestBody.create(MediaType.parse("text/plain"), phone)
-            val profile_pic = RequestBody.create(
-                MediaType.parse("text/plain"),
-                profile
-            )
+            val token: String = SharedPrefManager.getInstance(applicationContext).user.access_token.toString()
+            val firstName1 = RequestBody.create(MediaType.parse("text/plain"), firstName)
+            val lastName1 = RequestBody.create(MediaType.parse("text/plain"), lastName)
+            val email1 = RequestBody.create(MediaType.parse("text/plain"), email)
+            val dob1 = RequestBody.create(MediaType.parse("text/plain"), edittext1.text.toString())
+            val phoneNo1 = RequestBody.create(MediaType.parse("text/plain"), phone)
+            val profilePic = RequestBody.create(MediaType.parse("text/plain"), profile)
 
 
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("BitmapImage", profile)
             val map: MutableMap<String, RequestBody> = HashMap()
 
-            map.put("first_name", first_name1);
-            map.put("last_name", last_name1);
+            map.put("first_name", firstName1);
+            map.put("last_name", lastName1);
             map.put("email", email1);
             map.put("dob", dob1);
-            map.put("phone_no", phone_no1);
-            map.put("profile_pic", profile_pic);
-            val requestFile: RequestBody =
-                RequestBody.create(MediaType.parse("image/jpeg"), profile)
+            map.put("phone_no", phoneNo1);
+            map.put("profile_pic", profilePic);
+            val requestFile: RequestBody = RequestBody.create(MediaType.parse("image/jpeg"), profile)
 
             val body: MultipartBody.Part =
                 MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
@@ -175,8 +155,7 @@ class EditProfile : BaseClassActivity() {
                         Log.d("res", "" + t)
                     }
 
-                    override fun onResponse(
-                        call: Call<LoginResponse>,
+                    override fun onResponse(call: Call<LoginResponse>,
                         response: Response<LoginResponse>
                     ) {
                         var res = response
@@ -263,10 +242,7 @@ class EditProfile : BaseClassActivity() {
             .start(this@EditProfile)
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 555 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

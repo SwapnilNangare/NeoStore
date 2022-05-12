@@ -17,17 +17,12 @@ class DividerItemDecorator : ItemDecoration {
     private var mShowLastDivider = false
 
     constructor(context: Context, attrs: AttributeSet?) {
-        val a = context
-            .obtainStyledAttributes(attrs, intArrayOf(R.attr.listDivider))
+        val a = context.obtainStyledAttributes(attrs, intArrayOf(R.attr.listDivider))
         mDivider = a.getDrawable(0)
         a.recycle()
     }
 
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        showFirstDivider: Boolean,
-        showLastDivider: Boolean
+    constructor(context: Context, attrs: AttributeSet?, showFirstDivider: Boolean, showLastDivider: Boolean
     ) : this(context, attrs) {
         mShowFirstDivider = showFirstDivider
         mShowLastDivider = showLastDivider
@@ -97,12 +92,11 @@ class DividerItemDecorator : ItemDecoration {
         }
                 until childCount) {
             val child = parent.getChildAt(i)
-            val params =
-                child.layoutParams as RecyclerView.LayoutParams
+            val params = child.layoutParams as RecyclerView.LayoutParams
             if (orientation == LinearLayoutManager.VERTICAL) {
                 top = child.top - params.topMargin
                 bottom = top + size
-            } else { //horizontal
+            } else {
                 left = child.left - params.leftMargin
                 right = left + size
             }
@@ -113,8 +107,7 @@ class DividerItemDecorator : ItemDecoration {
         // show last divider
         if (mShowLastDivider && childCount > 0) {
             val child = parent.getChildAt(childCount - 1)
-            val params =
-                child.layoutParams as RecyclerView.LayoutParams
+            val params = child.layoutParams as RecyclerView.LayoutParams
             if (orientation == LinearLayoutManager.VERTICAL) {
                 top = child.bottom + params.bottomMargin
                 bottom = top + size
@@ -129,8 +122,7 @@ class DividerItemDecorator : ItemDecoration {
 
     private fun getOrientation(parent: RecyclerView): Int {
         return if (parent.layoutManager is LinearLayoutManager) {
-            val layoutManager =
-                parent.layoutManager as LinearLayoutManager?
+            val layoutManager = parent.layoutManager as LinearLayoutManager?
             layoutManager!!.orientation
         } else {
             throw IllegalStateException(

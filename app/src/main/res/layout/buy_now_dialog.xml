@@ -45,7 +45,9 @@ android:background="@drawable/dialog_bg"
     android:gravity="center"
     android:layout_marginTop="66px"
     android:background="@drawable/buynowedt"
-    android:inputType="number"></EditText>
+    android:inputType="number">
+
+</EditText>
 
     <Button
         android:layout_width="595px"

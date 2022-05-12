@@ -41,9 +41,7 @@ class ProductAdapter(val context: Context, var tablelist: List<TableData>) :
 
         holder.itemView!!.setOnClickListener {
             val context: Context = holder.itemView.context
-            val i = Intent(
-                context, ProductDetails::class.java
-            )
+            val i = Intent(context, ProductDetails::class.java)
             i.putExtra("id", tableItem.id)
             i.putExtra("product_category_id", tableItem.product_category_id)
             i.putExtra("name", tablelist.get(position).name)

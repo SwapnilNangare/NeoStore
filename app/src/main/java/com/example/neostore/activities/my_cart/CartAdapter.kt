@@ -78,7 +78,7 @@ class CartAdapter(private val context: Context, private val dataList: MutableLis
         Glide.with(context).load(dataList?.get(position)?.product?.product_images).into(holder.productImage)
 
         holder.swipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut)
-        Log.e("checkidd", dataList?.get(position)?.product?.id.toString())
+        Log.e("checkId", dataList?.get(position)?.product?.id.toString())
         // Drag From Right
 
         // Drag From Right
@@ -99,11 +99,7 @@ class CartAdapter(private val context: Context, private val dataList: MutableLis
             }
 
             override fun onStartClose(layout: SwipeLayout) {}
-            override fun onHandRelease(
-                layout: SwipeLayout,
-                xvel: Float,
-                yvel: Float
-            ) {
+            override fun onHandRelease(layout: SwipeLayout, xvel: Float, yvel: Float) {
             }
         })
 
@@ -138,9 +134,7 @@ class CartAdapter(private val context: Context, private val dataList: MutableLis
                             Log.d("res", "" + t)
                         }
 
-                        override fun onResponse(
-                            call: Call<DeleteResponse>,
-                            response: Response<DeleteResponse>
+                        override fun onResponse(call: Call<DeleteResponse>, response: Response<DeleteResponse>
                         ) {
                             progressDialog.dismiss()
                             (context as Activity).finish()
@@ -156,7 +150,7 @@ class CartAdapter(private val context: Context, private val dataList: MutableLis
                                 ).show()
                                 progress()
 
-                                Log.d("kjsfgxhufb", response.body()?.user_msg.toString())
+                                Log.d("Swapnil", response.body()?.user_msg.toString())
                             } else {
                                 try {
                                     val jObjError =
@@ -168,7 +162,7 @@ class CartAdapter(private val context: Context, private val dataList: MutableLis
                                     ).show()
                                 } catch (e: Exception) {
                                     Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
-                                    Log.e("errorrr", e.message)
+                                    Log.e("error", e.message)
                                 }
                             }
                         }

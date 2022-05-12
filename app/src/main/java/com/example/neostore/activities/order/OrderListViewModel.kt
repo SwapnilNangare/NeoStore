@@ -29,15 +29,12 @@ class OrderListViewModel(context: Application): AndroidViewModel(context) {
         get() {
             if (OrderDetails == null) {
                 OrderDetails = MutableLiveData<OrderDetailResponseBase>()
-               // loadOrderDetails()
+
             }
             return OrderDetails
         }
 
-    val token: String =
-        SharedPrefManager.getInstance(
-            getApplication()
-        ).user.access_token.toString()
+    val token: String = SharedPrefManager.getInstance(getApplication()).user.access_token.toString()
 
     //This method is using Retrofit to get the JSON data from URL
     private fun loadOrderList() {

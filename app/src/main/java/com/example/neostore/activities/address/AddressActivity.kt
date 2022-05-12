@@ -14,12 +14,12 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnChildAttachStateChangeListener
+import com.example.neostore.R
 import com.example.neostore.activities.address.room.Address
 import com.example.neostore.activities.api_manager.ApiManager
 import com.example.neostore.activities.forgot_password.model.ForgotResponse
 import com.example.neostore.activities.my_cart.AddToCart
 import com.example.neostore.activities.shared_pref_manager.SharedPrefManager
-import com.example.neostore.R
 import com.example.neostore.base.BaseClassActivity
 import kotlinx.android.synthetic.main.address.*
 import org.json.JSONObject
@@ -29,7 +29,6 @@ import retrofit2.Response
 
 class AddressActivity : BaseClassActivity() {
     private lateinit var data: LiveData<MutableList<Address>>
-    //private var data1: Int = 0
     var adapter: AddressAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +43,8 @@ class AddressActivity : BaseClassActivity() {
             val intent = Intent(this, AddAddressActivity::class.java)
             startActivity(intent)
         }
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+            mMessageReceiver,
             IntentFilter("custom-message1")
         )
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
@@ -69,8 +69,7 @@ class AddressActivity : BaseClassActivity() {
                 emptytext.setVisibility(View.VISIBLE)
             }
         })
-        recyclerView.addOnScrollListener(object :
-            RecyclerView.OnScrollListener() {
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 Log.e("RecyclerView", "onScrollStateChanged")
@@ -102,39 +101,32 @@ class AddressActivity : BaseClassActivity() {
 
 
     }
-
     var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
-            val token: String =
-                SharedPrefManager.getInstance(applicationContext).user.access_token.toString()
-            val ItemName = intent.getStringExtra("item1")
+            val token: String = SharedPrefManager.getInstance(applicationContext).user.access_token.toString()
+            val itemName = intent.getStringExtra("item1")
             ordernow.setOnClickListener {
 
-                if (ItemName != null) {
-                    ApiManager.instance.orderNow(token, ItemName).enqueue(object : Callback<ForgotResponse> {
+                if (itemName != null) {
+                    ApiManager.instance.orderNow(token, itemName).enqueue(object : Callback<ForgotResponse> {
                             override fun onFailure(call: Call<ForgotResponse>, t: Throwable) {
                                 Log.d("res", "" + t)
                             }
 
-                            override fun onResponse(
-                                call: Call<ForgotResponse>,
-                                response: Response<ForgotResponse>
-                            ) {
+                            override fun onResponse(call: Call<ForgotResponse>, response: Response<ForgotResponse>) {
                                 var res = response
-
                                 if (res.body()?.status == 200) {
-
                                     Log.d("response check ", "" + response.body()?.status.toString())
                                     showToast(applicationContext, res.body()?.user_msg)
                                     val i = Intent(applicationContext, AddToCart::class.java)
                                     startActivity(i)
-                                    Log.d("kjsfgxhufb", response.body()?.user_msg.toString())
+                                    Log.d("swapnil", response.body()?.user_msg.toString())
                                 } else {
                                     try {
-                                        val jObjError =
-                                            JSONObject(response.errorBody()!!.string())
+                                        val jObjError = JSONObject(response.errorBody()!!.string())
 
-                                        showToast(applicationContext, jObjError.getString("user_msg"))
+                                        showToast(applicationContext, jObjError.getString("user_msg")
+                                        )
 
                                     } catch (e: Exception) {
                                         showToast(applicationContext, e.message)

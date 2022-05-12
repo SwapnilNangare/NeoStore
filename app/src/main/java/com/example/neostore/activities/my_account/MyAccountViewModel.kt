@@ -42,9 +42,7 @@ class MyAccountViewModel(context: Application) : AndroidViewModel(context) {
                         try {
                             val jObjError =
                                 JSONObject(response.errorBody()!!.string())
-                            Toast.makeText(
-                                getApplication(),
-                                jObjError.getString("user_msg"),
+                            Toast.makeText(getApplication(), jObjError.getString("user_msg"),
                                 Toast.LENGTH_LONG
                             ).show()
                         } catch (e: Exception) {

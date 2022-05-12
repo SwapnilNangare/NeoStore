@@ -29,11 +29,10 @@ class Sofa: BaseClassActivity() {
 
         var mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbartable);
         setSupportActionBar(mActionBarToolbar);
-     setScreenTitle("Sofas")
+        setScreenTitle("Sofas")
         recyclerView = findViewById(R.id.recyleview)
 
-        val model =
-            ViewModelProvider(this)[ProductViewModel::class.java]
+        val model = ViewModelProvider(this)[ProductViewModel::class.java]
 
         model.sofa?.observe(this,object : Observer<TableResponse> {
             override fun onChanged(t: TableResponse?) {
@@ -41,11 +40,7 @@ class Sofa: BaseClassActivity() {
                 recyclerAdapter = ProductAdapter(applicationContext, tablelist)
                 recyclerView.layoutManager = LinearLayoutManager(applicationContext)
                 recyclerView.addItemDecoration(
-                    DividerItemDecoration(
-                        recyclerView.context,
-                        DividerItemDecoration.VERTICAL
-                    )
-                )
+                    DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
                 recyclerAdapter.setMovieListItems(t?.data as MutableList<TableData>)
 
                 recyclerView.adapter = recyclerAdapter

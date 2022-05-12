@@ -35,7 +35,7 @@ class OrderAdapter(var context: Context, var tablelist: List<OrderResponseData>)
         holder.orderid.text = tablelist.get(position).id.toString()
         holder.orderdate.text = tablelist.get(position).created
         holder.ordercost.text = tablelist.get(position).cost.toString()
-        Log.e("checkkkkk", tablelist.get(position).id.toString())
+        Log.e("Check", tablelist.get(position).id.toString())
 
         holder.itemView!!.setOnClickListener {
 
@@ -44,12 +44,9 @@ class OrderAdapter(var context: Context, var tablelist: List<OrderResponseData>)
             val intent = Intent("custom-message1")
             intent.putExtra("itemid", tablelist.get(position).id.toString());
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
-            val i = Intent(
-                context,
-                OrderDetailList::class.java
-            )
+            val i = Intent(context, OrderDetailList::class.java)
             i.putExtra("id", tablelist.get(position).id.toString())
-            Log.e("checkid", tablelist.get(position).id.toString())
+            Log.e("checkId", tablelist.get(position).id.toString())
             context.startActivity(i)
         }
     }

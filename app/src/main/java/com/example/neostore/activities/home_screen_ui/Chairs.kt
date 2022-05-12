@@ -27,7 +27,7 @@ class Chairs: BaseClassActivity(){
         setContentView(R.layout.table_activity)
         var mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbartable);
         setSupportActionBar(mActionBarToolbar);
-       setScreenTitle("Chairs")
+        setScreenTitle("Chairs")
         recyclerView = findViewById(R.id.recyleview)
 
         val model = ViewModelProvider(this)[ProductViewModel::class.java]
@@ -38,11 +38,7 @@ class Chairs: BaseClassActivity(){
                 recyclerAdapter = ProductAdapter(applicationContext, tablelist)
                 recyclerView.layoutManager = LinearLayoutManager(applicationContext)
                 recyclerView.addItemDecoration(
-                    DividerItemDecoration(
-                        recyclerView.context,
-                        DividerItemDecoration.VERTICAL
-                    )
-                )
+                    DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
                 recyclerAdapter.setMovieListItems(t?.data as MutableList<TableData>)
                 recyclerView.adapter = recyclerAdapter
             }
